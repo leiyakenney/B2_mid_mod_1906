@@ -1,0 +1,12 @@
+<% @books.each do |book| %>
+  <section id="book-<%= book.id %>">
+    <h1>Title: </h1><p><%= book.title %></p>
+    <h1>Pages: </h1><p><%= book.pages %></p>
+    <h1>Publication Year: </h1><p><%= book.year %></p>
+    <% book.authors.each do |author| %>
+      <section id="author-<%= author.id %>">
+        <p><%= author.name %></p>
+      </section>
+    <% end %>
+  </section>
+<% end %>
