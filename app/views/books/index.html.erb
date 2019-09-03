@@ -1,12 +1,15 @@
+<h1 align = "center">Books</h1>
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>">
-    <h1>Title: </h1><p><%= book.title %></p>
-    <h1>Pages: </h1><p><%= book.pages %></p>
-    <h1>Publication Year: </h1><p><%= book.year %></p>
-    <% book.authors.each do |author| %>
-      <section id="author-<%= author.id %>">
-        <p><%= author.name %></p>
-      </section>
-    <% end %>
+    <h3>Title: <%= book.title %></h3>
+    <p>Pages: <%= book.pages %></p>
+    <p>Publication Year: <%= book.year %></p>
+    <span>
+      <p> Author(s):
+        <% book.authors.each do |author| %>
+          <%= link_to author.name, "/authors/#{author.id}" %>
+        <% end %>
+      </p>
+    </span>
   </section>
 <% end %>
