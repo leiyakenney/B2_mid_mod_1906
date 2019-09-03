@@ -1,0 +1,9 @@
+<h1 align = "center"> <%= @author.name %> </h1>
+<span>
+  <h3> Books:
+    <% @author.books.each do |book| %>
+      <%= book.title %>
+    <% end %>
+  </h3>
+</span>
+  <p>Average Pages: <%=@author.avg_pages%></p>
