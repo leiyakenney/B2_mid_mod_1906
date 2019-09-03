@@ -13,12 +13,12 @@ RSpec.describe "Books Index Page" do
 
     it "shows each book in the system with title, pages, publication year, and author" do
       visit "/books"
-      
+
       within("#book-#{@it.id}") do
-        expect(page).to have_content(@it.title)
-        expect(page).to have_content(@it.pages)
-        expect(page).to have_content(@it.year)
-        expect(page).to have_content("Stephen King")
+        expect(page).to have_content("Title: #{@it.title}")
+        expect(page).to have_content("Pages: #{@it.pages}")
+        expect(page).to have_content("Publication Year: #{@it.year}")
+        expect(page).to have_content("Author(s): #{@king.name}")
       end
 
       within("#book-#{@shadow.id}") do
@@ -29,11 +29,18 @@ RSpec.describe "Books Index Page" do
       end
 
       within("#book-#{@ghost.id}") do
-        expect(page).to have_content(@ghost.title)
-        expect(page).to have_content(@ghost.pages)
-        expect(page).to have_content(@ghost.year)
-        expect(page).to have_content("Peter Straub")
+        expect(page).to have_content("Title: #{@ghost.title}")
+        expect(page).to have_content("Pages: #{@ghost.pages}")
+        expect(page).to have_content("Publication Year: #{@ghost.year}")
+        expect(page).to have_content("Author(s): #{@straub.name}")
       end
+    end
+    
+    it "I see each author's name is a link" do
+      visit "/books"
+
+      expect(page).to have_link(@koontz.name)
+      expect(page).to have_link(@straub.name)
     end
   end
 end
