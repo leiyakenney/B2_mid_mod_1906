@@ -4,4 +4,8 @@ class Author < ApplicationRecord
 
   validates_presence_of :name
 
+  def avg_pages
+    books.average(:pages)
+  end
+
 end
